@@ -1,0 +1,28 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-ucris-publications-block {
+	h3 {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+	h4 {
+		font-size: 16px;
+		padding-block-end: 0.2rem;
+		margin: 0;
+	}
+	div.publication-section {
+		padding-block-end: 2rem;
+	}
+	p {
+		margin-block-start: 0;
+		margin-block-end: 0;
+		&.italic {
+			font-style: italic;
+		}
+	}
+}
