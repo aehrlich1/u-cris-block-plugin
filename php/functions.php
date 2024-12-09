@@ -33,12 +33,23 @@ function extract_year($item): int {
 	return $lastStatus->publicationDate->year;
 }
 
+function extract_published($item): bool {
+	$publicationStatus = $item->publicationStatuses[0]->publicationStatus->term->text[0]->value ?? null;
+	if (strtolower($publicationStatus) === 'unpublished') {
+		return false;
+	}
+	return true;
+}
+
 function extract_volume($item): ?string {
     return $item->volume ?? null;
 }
 
 function extract_journal($item): ?string {
-    return $item->hostPublicationTitle->value ?? $item->journalAssociation->title->value ?? null;
+    return $item->hostPublicationTitle->value ??
+		   $item->journalAssociation->title->value ??
+		   $item->event->name->text[0]->value
+		   ?? null;
 }
 
 function extract_authors($item): array {

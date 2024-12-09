@@ -11,6 +11,7 @@ class Publication
 		public ?string $pages,
 		public ?string $volume,
 		public int     $year,
+		public bool    $published,
 		public ?string $journal,
 		public array   $authors) {
 	}

@@ -19,7 +19,7 @@ class PublicationService
 
 	private function publications_grouped_by_year_and_filtered(array $publications): array {
 		return array_reduce($publications, function ($grouped, $publication) {
-			if ($publication->journal !== null) {
+			if ( $publication->published ) {
 				$grouped[$publication->year][] = $publication;
 			}
 
@@ -53,6 +53,7 @@ class PublicationService
 			extract_pages($item),
 			extract_volume($item),
 			extract_year($item),
+			extract_published($item),
 			extract_journal($item),
 			extract_authors($item),
 		);
