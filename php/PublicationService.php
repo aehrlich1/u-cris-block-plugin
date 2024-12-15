@@ -47,7 +47,11 @@ class PublicationService {
 			},
 			function ( $publication ) use ( $startingYear ) {
 				return $publication->year >= $startingYear;
-			}
+			},
+			function ( $publication ) {
+				return stripos( $publication->journal ?? '', 'arxiv' ) === false &&
+					   stripos( $publication->publisher ?? '', 'arxiv' ) === false;
+			},
 		];
 		foreach ( $filters as $filter ) {
 			$publications = array_filter( $publications, $filter );
